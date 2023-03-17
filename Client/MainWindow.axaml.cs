@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace Centrifuge;
+namespace Centrifuge.Client;
 
 public partial class MainWindow : Window
 {
