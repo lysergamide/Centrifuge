@@ -8,6 +8,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        KeyGen.GenerateKeyPair();
+
         var host = new WebHostBuilder()
         .UseKestrel(options => {
             // Disable HTTPS endpoint
