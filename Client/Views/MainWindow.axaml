@@ -5,5 +5,12 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Centrifuge.Client.MainWindow"
         Title="Centrifuge">
-    Welcome to Avalonia!
+
+        <DockPanel>
+          <LeftBar/>
+          <Rectangle Fill="Blue" Width="100" DockPanel.Dock="Left"/>
+          <Rectangle Fill="Green" Height="100" DockPanel.Dock="Bottom"/>
+          <Rectangle Fill="Orange" Width="100" DockPanel.Dock="Right"/>
+          <Rectangle Fill="Gray" />
+        </DockPanel>
 </Window>
