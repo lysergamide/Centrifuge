@@ -7,6 +7,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        LeftTabStrip.AddDefaultTabLabel("Default");
+        LeftTabStrip.AddFixedTab("Default");
     }
 }
