@@ -2,12 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vs="clr-namespace:Centrifuge.Client.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Centrifuge.Client.LeftBar">
-  <TabStrip>
-    <TabItem Header="1">
-    </TabItem>
-    <TabItem Header="2">
-    </TabItem>
-  </TabStrip>
+             x:Class="Centrifuge.Client.Views.TabStrip">
+
+	<StackPanel Orientation="Vertical" Width="100">
+		<ItemsRepeater Items="{Binding Tabs}" HorizontalAlignment="Stretch"/>
+		<Button Content="+" Click="AddTab" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+	</StackPanel>
 </UserControl>
