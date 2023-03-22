@@ -24,4 +24,17 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\TabStrip.axaml.cs">
+      <DependentUpon>TabStrip.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Tab.axaml.cs">
+      <DependentUpon>Tab.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

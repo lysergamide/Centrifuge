@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:Class="Centrifuge.Client.Views.Tab">
+
+	<!-- Tabs consist of a grid with two columns [tab name, delete button] -->
+	<Grid Name="TabGrid">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="3*"/>
+			<ColumnDefinition Width="1*"/>
+		</Grid.ColumnDefinitions>
+
+		<ListBoxItem  Grid.Column="0" Grid.Row="0">
+			<TextBlock Name="TextBlock" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		</ListBoxItem>
+
+		<Button Name="DeleteButton"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				FontSize="12"
+				Background="DarkRed"
+				IsVisible="True"
+				Grid.Column="1"
+				Grid.Row="0">
+			X
+		</Button>
+	</Grid>
+</UserControl>

@@ -2,8 +2,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vs="clr-namespace:Centrifuge.Client.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Centrifuge.Client.MainWindow"
+        x:Class="Centrifuge.Client.Views.MainWindow"
         Title="Centrifuge">
-    Welcome to Avalonia!
+
+	<SplitView IsPaneOpen="True" DisplayMode="Inline" OpenPaneLength="100">
+		<SplitView.Pane>
+			<vs:TabStrip Name="LeftTabStrip"/>
+		</SplitView.Pane>
+		<Grid Name="TabWindow"/>
+	</SplitView>
 </Window>
