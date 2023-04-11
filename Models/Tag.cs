@@ -10,8 +10,9 @@ public class Tag
     public int Id { get; set; }
     [Required]
     public string Name { get; set; }
+    public Tag Parent {get; set;}
 
-    public ICollection<Tag> Children { get; set; }
-    public ICollection<Tag> Parents { get; set; }
-    public ICollection<Post> Posts { get; set; }
+    //public ICollection<Tag> Children { get; set; }
+    //public ICollection<Tag> Parents { get; set; }
+    //public ICollection<Item> Items { get; set; }
 }
