@@ -4,8 +4,8 @@ namespace Centrifuge.Models;
 
 public class LocalDbContext : DbContext
 {
-    public DbSet<User> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Item> Items { get; set; }
     public DbSet<Tag> Tags { get; set; }
 
     private static readonly string connectionString =
