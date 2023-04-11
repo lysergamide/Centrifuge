@@ -1,18 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Centrifuge.Models;
 
 public class Post
 {
-    public int ID { get; set; }
-    
+    public int Id { get; private set; }
     public string Title { get; set; }
     public string Description { get; set; }
+    public string FilePath { get; set; }
 
     public DateTime Created { get; set; }
     public DateTime Updated { get; set; }
-    
-    //public virtual ICollection<Enrollment> Enrollments { get; set; }
+
+    public ICollection<Tag> Tags { get; set; }
 }
