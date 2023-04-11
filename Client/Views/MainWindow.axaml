@@ -9,8 +9,10 @@
 
 	<SplitView IsPaneOpen="True" DisplayMode="Inline" OpenPaneLength="100">
 		<SplitView.Pane>
-			<vs:TabStrip Name="LeftTabStrip"/>
+		        <vs:TabStrip Name="LeftTabStrip"/>
 		</SplitView.Pane>
-		<Grid Name="TabWindow"/>
+		<Grid Name="TabWindow"> 
+                        <TextBlock Name="ListIDs" Text=""/>
+                </Grid>
 	</SplitView>
 </Window>
