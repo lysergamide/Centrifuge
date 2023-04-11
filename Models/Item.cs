@@ -5,11 +5,9 @@ namespace Centrifuge.Models;
 
 public class Item
 {
-    public const int Type = 0;
     public int Id { get; private set; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public string FilePath { get; set; }
 
     public DateTime Created { get; set; }
     public DateTime Updated { get; set; }
@@ -17,7 +15,14 @@ public class Item
     public ICollection<Tag> Tags { get; set; }
 }
 
-public class Item_Image
+public class ItemFile : Item
 {
-    public const int Type = 1;
+    public string FilePath { get; set; }
+    public string MIME_Type { get; set; }
+    public string MD5_Hash { get; set; }
+}
+
+public class ItemGroup : Item 
+{
+    public ICollection<Item> Children;
 }

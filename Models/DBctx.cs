@@ -5,7 +5,11 @@ namespace Centrifuge.Models;
 public class LocalDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
+
     public DbSet<Item> Items { get; set; }
+    public DbSet<ItemFile> ItemFiles { get; set; }
+    public DbSet<ItemGroup> ItemGroups { get; set; }
+
     public DbSet<Tag> Tags { get; set; }
 
     private static readonly string connectionString =
