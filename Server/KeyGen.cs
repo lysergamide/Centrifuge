@@ -19,8 +19,8 @@ public class KeyGen {
         var privateKey = keyPair.Private as Ed25519PrivateKeyParameters;
         var publicKey = keyPair.Public as Ed25519PublicKeyParameters;
 
-        Console.WriteLine($"Private key: {ToHex(privateKey.GetEncoded())}");
-        Console.WriteLine($"Public key: {ToHex(publicKey.GetEncoded())}");
+        Console.WriteLine($"Private key: {System.Convert.ToBase64String(privateKey.GetEncoded())}");
+        Console.WriteLine($"Public key: {System.Convert.ToBase64String(publicKey.GetEncoded())}");
 
         return keyPair;
     }

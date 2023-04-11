@@ -17,7 +17,7 @@ namespace Centrifuge.Models.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
 
-            modelBuilder.Entity("Centrifuge.Models.Post", b =>
+            modelBuilder.Entity("Centrifuge.Models.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,7 +30,7 @@ namespace Centrifuge.Models.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FilePath")
+                    b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -43,7 +43,11 @@ namespace Centrifuge.Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Items");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Item");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Centrifuge.Models.Tag", b =>
@@ -52,14 +56,24 @@ namespace Centrifuge.Models.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ItemId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("ParentId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
 
                     b.HasIndex("Name")
                         .IsUnique();
+
+                    b.HasIndex("ParentId");
 
                     b.ToTable("Tags");
                 });
@@ -85,67 +99,53 @@ namespace Centrifuge.Models.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PostTag", b =>
+            modelBuilder.Entity("Centrifuge.Models.ItemFile", b =>
                 {
-                    b.Property<int>("PostsId")
-                        .HasColumnType("INTEGER");
+                    b.HasBaseType("Centrifuge.Models.Item");
 
-                    b.Property<int>("TagsId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.HasKey("PostsId", "TagsId");
+                    b.Property<string>("MD5_Hash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.HasIndex("TagsId");
+                    b.Property<string>("MIME_Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("PostTag");
+                    b.HasDiscriminator().HasValue("ItemFile");
                 });
 
-            modelBuilder.Entity("TagTag", b =>
+            modelBuilder.Entity("Centrifuge.Models.ItemGroup", b =>
                 {
-                    b.Property<int>("ChildrenId")
-                        .HasColumnType("INTEGER");
+                    b.HasBaseType("Centrifuge.Models.Item");
 
-                    b.Property<int>("ParentsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ChildrenId", "ParentsId");
-
-                    b.HasIndex("ParentsId");
-
-                    b.ToTable("TagTag");
+                    b.HasDiscriminator().HasValue("ItemGroup");
                 });
 
-            modelBuilder.Entity("PostTag", b =>
+            modelBuilder.Entity("Centrifuge.Models.Tag", b =>
                 {
-                    b.HasOne("Centrifuge.Models.Post", null)
+                    b.HasOne("Centrifuge.Models.Item", null)
+                        .WithMany("Tags")
+                        .HasForeignKey("ItemId");
+
+                    b.HasOne("Centrifuge.Models.Tag", "Parent")
                         .WithMany()
-                        .HasForeignKey("PostsId")
+                        .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Centrifuge.Models.Tag", null)
-                        .WithMany()
-                        .HasForeignKey("TagsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("TagTag", b =>
+            modelBuilder.Entity("Centrifuge.Models.Item", b =>
                 {
-                    b.HasOne("Centrifuge.Models.Tag", null)
-                        .WithMany()
-                        .HasForeignKey("ChildrenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Centrifuge.Models.Tag", null)
-                        .WithMany()
-                        .HasForeignKey("ParentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }
