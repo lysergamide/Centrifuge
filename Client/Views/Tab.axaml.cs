@@ -15,10 +15,7 @@ public partial class Tab : UserControl
     public Tab()
     {
         InitializeComponent();
-        DeleteButton.Click += delegate
-        {
-            RaiseEvent(new RoutedEventArgs { RoutedEvent = DeleteEvent });
-        };
+        DeleteButton.Click += (s, e) => RaiseEvent(new RoutedEventArgs { RoutedEvent = DeleteEvent });
     }
 
     /// <summary>

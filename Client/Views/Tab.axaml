@@ -13,7 +13,7 @@
 		</Grid.ColumnDefinitions>
 
 		<ListBoxItem  Grid.Column="0" Grid.Row="0">
-			<TextBlock Name="TextBlock" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<TextBlock Name="Text" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 		</ListBoxItem>
 
 		<Button Name="DeleteButton"
@@ -23,7 +23,6 @@
 				VerticalContentAlignment="Center"
 				FontSize="12"
 				Background="DarkRed"
-				IsVisible="True"
 				Grid.Column="1"
 				Grid.Row="0">
 			X
